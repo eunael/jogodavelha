@@ -1,0 +1,73 @@
+@charset "UTF-8";
+.titulo{
+    text-align: center;
+}
+section{
+    background: green;
+    display: block;
+    width: 550px;
+    height: 350px;
+    margin: 0 auto;
+}
+.cabecjogo{
+    position: relative;
+    padding-top: 5px;
+    display: block;
+    height: 60px;
+    border-bottom: 1px solid black;
+}
+.cabecjogo > button#estado{
+    width: 100px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 15px;
+    font: normal bold 12.13pt 'Gall Sans', sans-serif;
+    visibility: visible;
+}
+div#jogo{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    max-width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 15px;
+    visibility: hidden;
+    /* border: 1px solid black; */
+}
+#jogo > div{
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    /* border: 1px solid black; */
+    border: 3px solid black;
+    border-spacing: 0px;
+}
+#jogo > div.a{
+    border-top: none;
+}
+#jogo > div.c{
+    border-bottom: none;
+}
+#jogo > div.um{
+    border-left: none;
+}
+#jogo > div.tres{
+    border-right: none;
+}
+#jogo label{
+    color: #fff;
+    background-color: none;
+    display: block;
+    width: 60px;
+    border: 1px solid black;
+    padding: 18px 0px 18px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font: normal bold 18pt 'Gall Sans', sans-serif;
+}
+footer{
+    border-top: 1px solid black;
+}
