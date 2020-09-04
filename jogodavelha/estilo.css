@@ -1,26 +1,37 @@
 @charset "UTF-8";
+body{
+    background: #0f75eb;
+}
 .titulo{
+    font: normal bold 14pt 'Gall Sans', sans-serif;
     text-align: center;
 }
+h1{
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.35) 0 0.125rem 0.25rem;
+}
 section{
-    background: green;
+    background: #fff;
     display: block;
     width: 550px;
     height: 350px;
     margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0.125rem 0.25rem;
 }
 .cabecjogo{
     position: relative;
     padding-top: 5px;
     display: block;
     height: 60px;
-    border-bottom: 1px solid black;
 }
 .cabecjogo > button#estado{
+    background: #fff;
     width: 100px;
     height: 40px;
-    margin-top: 5px;
+    margin-top: 6px;
     margin-left: 15px;
+    border-radius: 5px;
     font: normal bold 12.13pt 'Gall Sans', sans-serif;
     visibility: visible;
 }
@@ -30,18 +41,18 @@ div#jogo{
     align-content: center;
     justify-content: center;
     max-width: 200px;
+    border: 6px solid black;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0.125rem 0.25rem;
     height: 200px;
     margin: 0 auto;
     margin-top: 15px;
-    visibility: hidden;
-    /* border: 1px solid black; */
+    visibility: visible;
 }
 #jogo > div{
     display: inline-flex;
     width: 60px;
     height: 60px;
     align-items: center;
-    /* border: 1px solid black; */
     border: 3px solid black;
     border-spacing: 0px;
 }
@@ -62,12 +73,15 @@ div#jogo{
     background-color: none;
     display: block;
     width: 60px;
-    border: 1px solid black;
     padding: 18px 0px 18px 0px;
     text-align: center;
     text-transform: uppercase;
     font: normal bold 18pt 'Gall Sans', sans-serif;
 }
 footer{
-    border-top: 1px solid black;
+    text-align: center;
+}
+#vencedor{
+    font: normal bold 18pt 'Gall Sans', sans-serif; 
+    text-transform: uppercase;
 }

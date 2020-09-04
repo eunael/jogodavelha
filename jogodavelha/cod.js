@@ -17,34 +17,36 @@ pVenc = document.getElementById('vencedor')
 botEstads = document.getElementById('estado')
 
 botEstads.addEventListener('click', estadosDoJogo)
-for(c in casinhas){
+for(let c=0; c<casinhas.length; c++){
     let casa = casinhas[c]
     casa.addEventListener('click', (event) => {
-        trocaJog(vez)
-        desenhaJog(casa)
+        if(casa.innerHTML === " " && estadoJogo==estados.jogando){
+            trocaJog(vez)
+            desenhaJog(casa)
+        } else{}
         ven = vencedor()
         if(ven === 'velha'){
-            pVenc.innerHTML = ven
+            mensagemFim(ven, '#0F0')
             estadoJogo = estados.fim
             estadosDoJogo()
-        }else if(ven && ven != 'velha'){
-            pVenc.innerHTML = ven
+        }else if(ven && ven[0] != 'velha'){
+            mensagemFim(ven[0], ven[1])
             estadoJogo = estados.fim
             estadosDoJogo()
         }
     })
 }
 function resetJog(){
-    for(c in casinhas){
+    for(let c=0; c<casinhas.length; c++){
         let casa = casinhas[c]
         casa.innerHTML = " "
         casa.style.backgroundColor="#ffffff00";
+        pVenc.innerHTML = " "
     }
 }
 function estadosDoJogo(){
     if(estadoJogo == estados.jogar){
         botEstads.style.visibility = 'hidden'
-        jogo.style.visibility = 'visible'
         estadoJogo = estados.jogando
         resetJog()
     } else if(estadoJogo == estados.fim){
@@ -65,70 +67,111 @@ function desenhaJog(ksa){
 }
 function vencedor(){
     if((casinhas[0].innerHTML==casinhas[1].innerHTML) && (casinhas[1].innerHTML==casinhas[2].innerHTML) && casinhas[0].innerHTML!=' ' ) {
+        /** LINHA 1 */
         casinhas[0].style.backgroundColor='#0F0';
         casinhas[1].style.backgroundColor='#0F0';
         casinhas[2].style.backgroundColor='#0F0';
-
-        return casinhas[0].innerHTML;
+        if(casinhas[0].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[3].innerHTML==casinhas[4].innerHTML) && (casinhas[4].innerHTML==casinhas[5].innerHTML) && casinhas[3].innerHTML!=' ' ) {
+        /** LINHA 2 */
         casinhas[3].style.backgroundColor='#0F0';
         casinhas[4].style.backgroundColor='#0F0';
         casinhas[5].style.backgroundColor='#0F0';
-
-        return casinhas[3].innerHTML;
+        if(casinhas[3].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[6].innerHTML==casinhas[7].innerHTML) && (casinhas[7].innerHTML==casinhas[8].innerHTML) && casinhas[6].innerHTML!=' ' ) {
+        /** LINHA 3 */
         casinhas[6].style.backgroundColor='#0F0';
         casinhas[7].style.backgroundColor='#0F0';
         casinhas[8].style.backgroundColor='#0F0';
-
-        return casinhas[6].innerHTML;
+        if(casinhas[6].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[0].innerHTML==casinhas[3].innerHTML) && (casinhas[3].innerHTML==casinhas[6].innerHTML) && casinhas[0].innerHTML!=' ' ) {
+        /** COLUNA 1 */
         casinhas[0].style.backgroundColor='#0F0';
         casinhas[3].style.backgroundColor='#0F0';
         casinhas[6].style.backgroundColor='#0F0';
-
-        return casinhas[0].innerHTML;
+        if(casinhas[0].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[1].innerHTML==casinhas[4].innerHTML) && (casinhas[4].innerHTML==casinhas[7].innerHTML) && casinhas[1].innerHTML!=' ' ) {
+        /** COLUNA 2 */
         casinhas[1].style.backgroundColor='#0F0';
         casinhas[4].style.backgroundColor='#0F0';
         casinhas[7].style.backgroundColor='#0F0';
-
-        return casinhas[1].innerHTML;
+        if(casinhas[1].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[2].innerHTML==casinhas[5].innerHTML) && (casinhas[5].innerHTML==casinhas[8].innerHTML) && casinhas[2].innerHTML!=' ' ) {
+        /** COLUNA 3 */
         casinhas[2].style.backgroundColor='#0F0';
         casinhas[5].style.backgroundColor='#0F0';
         casinhas[8].style.backgroundColor='#0F0';
-
-        return casinhas[2].innerHTML;
+        if(casinhas[2].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
     } else if((casinhas[0].innerHTML==casinhas[4].innerHTML) && (casinhas[4].innerHTML==casinhas[8].innerHTML) && casinhas[0].innerHTML!=' ' ) {
+        /** DIAGONAL PRIMÁRIA */
         casinhas[0].style.backgroundColor='#0F0';
         casinhas[4].style.backgroundColor='#0F0';
         casinhas[8].style.backgroundColor='#0F0';
-
-        return casinhas[0].innerHTML;
+        if(casinhas[0].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
+        }
 
     } else if((casinhas[2].innerHTML==casinhas[4].innerHTML) && (casinhas[4].innerHTML==casinhas[6].innerHTML) && casinhas[2].innerHTML!=' ' ) {
+        /** DIAGONAL SECUNDÁRIA */
         casinhas[2].style.backgroundColor='#0F0';
         casinhas[4].style.backgroundColor='#0F0';
         casinhas[6].style.backgroundColor='#0F0';
-
-        return casinhas[2].innerHTML;
-    } else{
-        let cont = 0
-        for(c in casinhas){
-            let casa = casinhas[c]
-            if(casa.innerHTML === " "){
-                cont = 1
-            }
+        if(casinhas[2].innerHTML === jogador.x[0]){
+            return jogador.x
+        } else {
+            return jogador.o
         }
-        if(cont == 0){
+
+    } else{
+        /** DEU VELHA */
+        let cont = 0
+        let ksas = []
+        for(let c=0; c<casinhas.length; c++){
+            let casa = casinhas[c].innerHTML
+            ksas.push(casa)
+        }
+        if(ksas.every((k, index) => (k!=" "))){
             return 'velha'
         }
     }
     return false
+}
+function mensagemFim(venc, color){
+    if(venc != 'velha'){
+        pVenc.innerHTML = `o vencedor é ${venc}!`
+    } else {
+        pVenc.innerHTML = 'deu velha!'
+    }
+    pVenc.style.color = color
 }
